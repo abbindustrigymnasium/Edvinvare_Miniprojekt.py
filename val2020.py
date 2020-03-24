@@ -58,17 +58,20 @@ Partier = [
         "max_röst" : 34,
     }]
 
-slutres= 0
+slutres = 0
+nyres = slutres
+mandat = 0
+just = 0
+Oljeblocket = 0
+Småpartierna = 0
+hproc = 0
+vproc = 0
+röstberättigade = 0
+röstare= 0
+fuskare= 0
 stop= False
-nödbroms= 0 
-nyres= slutres
-mandat= 0
-just=0
-Oljeblocket=0
-Småpartierna=0
-hproc=0
-vproc=0
-
+röstberättigade=int(input("Hur många rösberättigade finns i samhället som ska rösta\n"))
+print("\n----------------------------------------------------------------------------\n")
 while stop == False:
     for Parti in Partier:
         resultat = numpy.random.randint(high= Parti["max_röst"],low= Parti["min_röst"])
@@ -104,10 +107,17 @@ print("\n-----------------------------------------------------------------------
 
 print("Oljeblocket får",Oljeblocket,"mandat")
 print("Småpartierna får",Småpartierna,"mandat")
-print("Totalt var det",slutres,"%","som röstade!")
+
 if vproc>hproc:
     print("Folk röstar mer mot vänster med totalt",vproc-hproc,"% enheter")
 elif vproc==hproc:
     print("Folk röstar lika mycket vänster som höger")
 else:
     print("Folk röstar mer mot höger med totalt",hproc-vproc,"% enheter")
+print("Valdeltagandet var",slutres,"%")
+röstare=int(röstberättigade*slutres/100)
+fuskare= röstberättigade-röstare
+if fuskare==0:
+    print("Alla röstberättigade i hela samhället röstade, hurra för demokratin!!!")
+else:
+    print("Det var",fuskare,"personer som inte röstade, fy på dem!!!")
