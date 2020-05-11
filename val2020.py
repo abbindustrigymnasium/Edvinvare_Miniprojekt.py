@@ -81,22 +81,24 @@ while stop == False:
         slutres = 0         #if result is over 100% it starts over
     else:
         break
+
+
+for dic in Partier:
+    if dic["resultat"]<4:       #Counting on wether the party makes it into the parliament
+        just=dic["resultat"]+just     #fixing the result so that the mandates is based on the ones that come in not every party  
+
 nyres=slutres-just
 
 for dic in Partier:
-    if dic["resultat"]<4:
-        just=dic["resultat"]-just       #Counting on wether the party makes it into the parliament
-    print(dic["namn"],"fick", dic["resultat"],"%",end=" ")      #printing the result for each party in the voting
-
     if dic["resultat"]>=4:
         mandat= int(dic["resultat"]/nyres*349)      #counting how many mandates the party gets in the parliament
-        print("vilket är",mandat,"mandat i riksdagen")      #printing the result of the mandates
+        print(dic["namn"],"fick", dic["resultat"],"%","vilket är",mandat,"mandat i riksdagen")      #printing the result of the mandates if the got any
         if dic["block"]=="Oljeblocket":
             Oljeblocket=Oljeblocket+mandat      #counting mandates for each political coalition
         elif dic["block"]=="Småpartierna":
             Småpartierna=Småpartierna+mandat
     else:
-        print("och kommer då inte in i riksdagen")
+        print(dic["namn"],"fick", dic["resultat"],"% och kommer då inte in i riksdagen")       #printing the result if the party didnt make it to the parliament
     
     if dic["inriktning"]=="Höger":          #counting percentage for the left or right 
         hproc=hproc+dic["resultat"]
