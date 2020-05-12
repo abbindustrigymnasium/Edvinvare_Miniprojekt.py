@@ -66,7 +66,6 @@ Oljeblocket = 0
 Småpartierna = 0
 hproc = 0
 vproc = 0
-röstberättigade = 7500000
 röstare= 0
 fuskare= 0
 stop= False
